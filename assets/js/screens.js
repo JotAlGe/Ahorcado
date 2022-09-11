@@ -1,3 +1,3 @@
-export function startGame(element, cls){
+export function addOrRemoveClassToElement(element, cls){
     element.classList.toggle(cls);
 }
