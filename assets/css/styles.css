@@ -72,9 +72,7 @@ button:hover{
 .section{
     grid-template-columns: repeat(12,1fr);
 }
-.addWord{
-    
-}
+
 .addWord__text{
     grid-column: 3 / 11;
     grid-row: 2 / 10;
@@ -103,7 +101,7 @@ button:hover{
     fill: var(--gray);
     width: 15px;
 }
-.addWord__buttons{
+.addWord__buttons, .new__game__buttons{
     grid-row: 10 / 12;
     grid-column: 3 / 11;
 
@@ -114,7 +112,7 @@ button:hover{
 .addWord__buttons p{
     grid-column: 2 / 8;
 }
-.addWord__buttons button{
+.addWord__buttons button, .new__game__buttons button{
     grid-row: 2 / 4;
 
     border-radius: 24px;
@@ -132,4 +130,19 @@ button:hover{
     color: var(--primary-color);
     border: 1px solid var(--primary-color);
     background-color: transparent;
+}
+
+/* new game section */
+.new__game{
+    max-width: 100%;
+    
+}
+.new__game--canvas{
+    background-color: rgba(255, 0, 0, .2);
+    grid-column: 2 / 12;
+    grid-row: 2 / 10;
+    max-width: 100%;
+    max-height: 100%;
+    
+    margin: auto;
 }
