@@ -146,3 +146,27 @@ button:hover{
     
     margin: auto;
 }
+
+/* word random */
+.word{
+    grid-column: 4 /10 ;
+    grid-row: 9;
+
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    gap: 1%;
+}
+.word__input{
+    border: none;
+    padding: 1%;
+    max-width: 30px;
+    text-align: center;
+    height: 50px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    border-bottom: 5px solid var(--gray);
+}
+.word__input:focus{
+    outline: none;
+}

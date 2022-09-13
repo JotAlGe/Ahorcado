@@ -18,3 +18,23 @@ export function drawLetterWord(canvas){
 
     //
 }
+
+export function getAWordRandom(){
+    let words = [
+        'HTML', 'CSS', 'JAVASCRIPT', 'ALURA'
+    ]
+    return words[Math.floor(Math.random() * words.length)]
+}
+
+export function createInput(container, cant){
+    let input
+    for(let i = 0; i < cant.length; i++){
+        input = document.createElement("input")
+        input.classList.add('word__input')
+        input.setAttribute('maxlength', 1)
+        input.setAttribute('autofocus', true)
+        container.appendChild(input)
+    }
+}
+
+
