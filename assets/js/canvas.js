@@ -50,14 +50,23 @@ export function createInput(container, cant){
 }
 
 // draw vertical line
-export function drawVerticalLine(canvas){
+export function drawLine(canvas, moveToX, moveToY, lineToX, lineToY){
     let context = canvas.getContext("2d")
 
-    context.lineWidht = 5
+    context.lineWidht = 2
     context.strokeStyle = '#000'
+    
     context.beginPath()
-    context.moveTo((canvas.width / 2), (canvas.height-300))
-    context.lineTo((canvas.width / 2), (canvas.height - 1500))
+    context.moveTo(moveToX, moveToY)
+    context.lineTo(lineToX, lineToY)
     context.stroke()
 }
 
+// draw circle
+export function drawCircle(canvas){
+    let context = canvas.getContext("2d")
+
+    context.beginPath()
+    context.arc(1000, 150, 50, 0, 2 * Math.PI)
+    context.stroke()
+}

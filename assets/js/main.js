@@ -1,5 +1,5 @@
 import { addOrRemoveClassToElement } from './screens.js'
-import { drawBaseLIne, drawLetterWord, getAWordRandom, createInput, saveNewWord, drawVerticalLine } from './canvas.js'
+import { drawBaseLIne, drawLetterWord, getAWordRandom, createInput, saveNewWord, drawLine, drawCircle } from './canvas.js'
 
 // buttons
 const btnStartGame = document.querySelector('.init')
@@ -48,7 +48,26 @@ desistBtn.addEventListener('click', () => {
 newGameBtn.addEventListener('click', () => {
     let word = getAWordRandom()
     createInput(containerWord, word.length)
-    drawVerticalLine(canvas)
+    
+    drawLine(canvas, (canvas.width / 2), (canvas.height-300), (canvas.width / 2), (canvas.height - 1500))
+    
+    drawLine(canvas, (canvas.width / 2), 0, 1000, 0)
+    drawLine(canvas, 1000, 0, 1000, 100)
+    
+    drawCircle(canvas)
+
+    // body
+    drawLine(canvas, 1000, 600, 1000, 200)
+    // left leg
+    drawLine(canvas, 900, 800, 1000, 600)
+
+    // right leg
+    drawLine(canvas, 1100, 800, 1000, 600)
+
+    // right arm
+    drawLine(canvas, 1100, 500, 1000, 300)
+    // left arm
+    drawLine(canvas, 900, 500, 1000, 300)
 })
 
 // save a new word
