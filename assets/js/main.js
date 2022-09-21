@@ -47,27 +47,41 @@ desistBtn.addEventListener('click', () => {
 // click to new game
 newGameBtn.addEventListener('click', () => {
     let word = getAWordRandom()
+
+    addOrRemoveClassToElement(newGameBtn, 'hidden')
     createInput(containerWord, word.length)
     
-    drawLine(canvas, (canvas.width / 2), (canvas.height-300), (canvas.width / 2), (canvas.height - 1500))
+    for (let i = 0; i < containerWord.childElementCount; i++) {
+        containerWord.children[i].addEventListener('keyup', e => {
+            console.log(e.target.value)
+        })
+    }
     
-    drawLine(canvas, (canvas.width / 2), 0, 1000, 0)
-    drawLine(canvas, 1000, 0, 1000, 100)
+    //for (let i = 0; i < word.length; i++) {
+    //    //const element = array[i];
+    //    console.log(word[i])
+    //}
+   
+    // main line
+    //drawLine(canvas, (canvas.width / 2), (canvas.height-300), (canvas.width / 2), (canvas.height - 1500))
     
-    drawCircle(canvas)
+    //drawLine(canvas, (canvas.width / 2), 0, 1000, 0)
+    //drawLine(canvas, 1000, 0, 1000, 100)
+    
+    //drawCircle(canvas)
 
     // body
-    drawLine(canvas, 1000, 600, 1000, 200)
+    //drawLine(canvas, 1000, 600, 1000, 200)
     // left leg
-    drawLine(canvas, 900, 800, 1000, 600)
+    //drawLine(canvas, 900, 800, 1000, 600)
 
     // right leg
-    drawLine(canvas, 1100, 800, 1000, 600)
+    //drawLine(canvas, 1100, 800, 1000, 600)
 
     // right arm
-    drawLine(canvas, 1100, 500, 1000, 300)
+    //drawLine(canvas, 1100, 500, 1000, 300)
     // left arm
-    drawLine(canvas, 900, 500, 1000, 300)
+    //drawLine(canvas, 900, 500, 1000, 300)
 })
 
 // save a new word

@@ -49,6 +49,8 @@ export function createInput(container, cant){
 
 }
 
+
+
 // draw vertical line
 export function drawLine(canvas, moveToX, moveToY, lineToX, lineToY){
     let context = canvas.getContext("2d")
