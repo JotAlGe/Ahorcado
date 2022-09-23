@@ -16,6 +16,7 @@ const sectionNewgame = document.querySelector('.new__game')
 const canvas = document.querySelector('.new__game--canvas')
 const containerWord = document.getElementById('container')
 const textarea = document.getElementById('textarea')
+const errors = document.getElementById('errors')
 
 // click to start game
 btnStartGame.addEventListener('click', () => {
@@ -46,21 +47,29 @@ desistBtn.addEventListener('click', () => {
    
 // click to new game
 newGameBtn.addEventListener('click', () => {
-    let word = getAWordRandom()
+    let word = getAWordRandom().toUpperCase()
 
     addOrRemoveClassToElement(newGameBtn, 'hidden')
     createInput(containerWord, word.length)
     
     for (let i = 0; i < containerWord.childElementCount; i++) {
         containerWord.children[i].addEventListener('keyup', e => {
-            console.log(e.target.value)
+            
+            if(e.target.value === word[i]){
+                //console.log('son iguales')
+                errors.children[1].innerText += e.target.value
+                errors.children[1].classList.add('good')
+            }else{
+                //console.log(e.target.value)
+                errors.children[0].innerText += e.target.value
+                errors.children[0].classList.add('bad')
+            }
+            
         })
     }
-    
-    //for (let i = 0; i < word.length; i++) {
-    //    //const element = array[i];
-    //    console.log(word[i])
-    //}
+
+
+     
    
     // main line
     //drawLine(canvas, (canvas.width / 2), (canvas.height-300), (canvas.width / 2), (canvas.height - 1500))
