@@ -44,33 +44,72 @@ desistBtn.addEventListener('click', () => {
     addOrRemoveClassToElement(sectionNewgame, 'hidden')
 })
 
-   
+
 // click to new game
 newGameBtn.addEventListener('click', () => {
     let word = getAWordRandom().toUpperCase()
-
+    
     addOrRemoveClassToElement(newGameBtn, 'hidden')
     createInput(containerWord, word.length)
     
+    
     for (let i = 0; i < containerWord.childElementCount; i++) {
         containerWord.children[i].addEventListener('keyup', e => {
-            
-            if(e.target.value === word[i]){
-                //console.log('son iguales')
-                errors.children[1].innerText += e.target.value
-                errors.children[1].classList.add('good')
+            let mayus = e.getModifierState && e.getModifierState( 'CapsLock' )
+            if(mayus != true){
+                alert('Active la tecla Bloq Mayus')
             }else{
-                //console.log(e.target.value)
-                errors.children[0].innerText += e.target.value
-                errors.children[0].classList.add('bad')
+                if(e.target.value === word[i]){
+                    errors.children[1].innerText += e.target.value
+                    errors.children[1].classList.add('good')
+                }else{
+                    //console.log(e.target.value)
+                    errors.children[0].innerHTML += `<span>${e.target.value}</span>`
+                    errors.children[0].toUpperCase
+                    errors.children[0].classList.add('bad')
+
+                    for (let j = 0; j < errors.children[0].childNodes.length; j++) {
+                        switch(i){
+                            case 0:
+                                drawLine(canvas, (canvas.width / 2), (canvas.height-300), (canvas.width / 2), (canvas.height - 1500))              
+                                break;
+                            case 1: 
+                                drawLine(canvas, (canvas.width / 2), 0, 1000, 0)
+                                break;
+                            case 2:
+                                drawLine(canvas, 1000, 0, 1000, 100)
+                                  break;
+                            case 3:
+                                drawCircle(canvas)
+                                break;
+                            case 4:
+                                drawLine(canvas, 1000, 600, 1000, 200)
+                                break;
+                            case 5:
+                                drawLine(canvas, 900, 800, 1000, 600)
+                                break;
+                            case 6:
+                                drawLine(canvas, 1100, 800, 1000, 600)
+                                break;
+
+                            case 7:
+                                drawLine(canvas, 1100, 500, 1000, 300)
+                                break;
+                            case 8:
+                                drawLine(canvas, 900, 500, 1000, 300)
+                                break;
+                        }
+                        if(errors.children[0].childNodes.length === word.length){
+                            console.log('Perdiste')
+                        }
+                    }
+                }
             }
-            
         })
     }
 
-
      
-   
+    
     // main line
     //drawLine(canvas, (canvas.width / 2), (canvas.height-300), (canvas.width / 2), (canvas.height - 1500))
     
