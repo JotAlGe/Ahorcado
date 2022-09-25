@@ -13,11 +13,7 @@ export function drawBaseLIne(canvas){
     context.stroke();
 }
 
-export function drawLetterWord(canvas){
-    let context = canvas.getContext("2d")
 
-    //
-}
 
 // get a word random
 export function getAWordRandom(){
@@ -28,12 +24,15 @@ export function getAWordRandom(){
 }
 
 // save a new word
-export function saveNewWord(word){
-    let words = [
-        'HTML', 'CSS', 'JAVASCRIPT', 'ALURA'
-    ]
-    return words.push(word.split(''))
+export function saveNewWord(words, newWord){
+    
+    if(newWord.length <= 5 && newWord.length >= 1){
+        return words.push(newWord)
+    }else{
+        console.log('Tiene que tener menos de 5 caracteres')
+    }
 }
+
 
 // create input 
 export function createInput(container, cant){
@@ -49,7 +48,12 @@ export function createInput(container, cant){
 
 }
 
-
+// get all words
+export function getAllWords(){
+    return  [
+        'HTML', 'CSS', 'JAVASCRIPT', 'ALURA'
+    ]
+}
 
 // draw vertical line
 export function drawLine(canvas, moveToX, moveToY, lineToX, lineToY){

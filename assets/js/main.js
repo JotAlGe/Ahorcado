@@ -1,5 +1,5 @@
 import { addOrRemoveClassToElement } from './screens.js'
-import { drawBaseLIne, drawLetterWord, getAWordRandom, createInput, saveNewWord, drawLine, drawCircle } from './canvas.js'
+import { drawBaseLIne, getAWordRandom, createInput, saveNewWord, drawLine, drawCircle, getAllWords } from './canvas.js'
 
 // buttons
 const btnStartGame = document.querySelector('.init')
@@ -23,7 +23,7 @@ btnStartGame.addEventListener('click', () => {
     addOrRemoveClassToElement(divButtons, 'hidden')
     addOrRemoveClassToElement(sectionNewgame, 'hidden')
     drawBaseLIne(canvas)
-    drawLetterWord(canvas)
+    //drawLetterWord(canvas)
 })
 
 // click to add word
@@ -36,12 +36,15 @@ btnStartAdd.addEventListener('click', () => {
 cancelBtn.addEventListener('click', () => {
     addOrRemoveClassToElement(divButtons, 'hidden')
     addOrRemoveClassToElement(addWord, 'hidden')
+    textarea.value = ''
+    location.reload()
 })
 
 // click to desist button
 desistBtn.addEventListener('click', () => {
     addOrRemoveClassToElement(divButtons, 'hidden')
     addOrRemoveClassToElement(sectionNewgame, 'hidden')
+    location.reload()
 })
 
 
@@ -60,8 +63,13 @@ newGameBtn.addEventListener('click', () => {
                 alert('Active la tecla Bloq Mayus')
             }else{
                 if(e.target.value === word[i]){
-                    errors.children[1].innerText += e.target.value
+                    errors.children[1].innerHTML+= `<span>${e.target.value}</span>`
                     errors.children[1].classList.add('good')
+
+                    if(errors.children[1].childNodes.length === word.length){
+                        errors.children[1].innerHTML = '<h2>¡Ganaste!</h2>'
+                        errors.children[0].style.display = 'none'
+                    }
                 }else{
                     //console.log(e.target.value)
                     errors.children[0].innerHTML += `<span>${e.target.value}</span>`
@@ -100,7 +108,8 @@ newGameBtn.addEventListener('click', () => {
                                 break;
                         }
                         if(errors.children[0].childNodes.length === word.length){
-                            console.log('Perdiste')
+                            errors.children[0].innerHTML = '<h2>¡Perdiste!</h2>'
+                            errors.children[1].style.display = 'none'
                         }
                     }
                 }
@@ -109,30 +118,11 @@ newGameBtn.addEventListener('click', () => {
     }
 
      
-    
-    // main line
-    //drawLine(canvas, (canvas.width / 2), (canvas.height-300), (canvas.width / 2), (canvas.height - 1500))
-    
-    //drawLine(canvas, (canvas.width / 2), 0, 1000, 0)
-    //drawLine(canvas, 1000, 0, 1000, 100)
-    
-    //drawCircle(canvas)
-
-    // body
-    //drawLine(canvas, 1000, 600, 1000, 200)
-    // left leg
-    //drawLine(canvas, 900, 800, 1000, 600)
-
-    // right leg
-    //drawLine(canvas, 1100, 800, 1000, 600)
-
-    // right arm
-    //drawLine(canvas, 1100, 500, 1000, 300)
-    // left arm
-    //drawLine(canvas, 900, 500, 1000, 300)
+   
 })
 
 // save a new word
 newWordBtn.addEventListener('click', () => {
-    console.log(saveNewWord(getAWordRandom(), textarea.value))
+    console.log(getAllWords().push(textarea.value))
+    console.log(getAllWords())
 })
